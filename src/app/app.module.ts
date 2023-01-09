@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameResultsComponent } from './game-results/game-results.component';
 import { GameStatsComponent } from './game-stats/game-stats.component';
 import { TeamFilterPipe } from './shared/pipes/team-filter.pipe';
+import { ConfirmationModalComponent } from './shared/components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TeamFilterPipe } from './shared/pipes/team-filter.pipe';
     GameResultsComponent,
     GameStatsComponent,
     TeamFilterPipe,
+    ConfirmationModalComponent,
   ],
   imports: [
     BrowserModule,
