@@ -30,4 +30,10 @@ export interface Stats {
   lastGames: Result[];
 }
 
+export interface Filter {
+  conferences: string[];
+  teams: Team[];
+  divisions: string[];
+}
+
 export type Result = 'W' | 'L';
