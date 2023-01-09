@@ -7,7 +7,7 @@
           *ngFor="let conference of filters.conferences"
           [value]="conference"
         >
-          {{ conference }} Conference
+          {{ conference }}ern Conference
         </option>
       </select>
 
@@ -36,6 +36,15 @@
     </form>
   </div>
 </div>
+<select name="daysOfData" id="days" (change)="selectDaysToDisplay($event)">
+  <option
+    *ngFor="let days of daysOfData"
+    [value]="days"
+    [selected]="days == daysDataStoreService.currentDaysOfData"
+  >
+    {{ days }}
+  </option>
+</select>
 <div class="row">
   <app-team-stats
     class="col-sm-4"

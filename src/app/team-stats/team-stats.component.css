@@ -3,9 +3,14 @@
   margin: 5px;
   display: block;
 }
-span{
+span {
   float: right;
   cursor: pointer;
+}
+
+.list-mark {
+  padding: 4px 0px;
+  overflow-x: auto;
 }
 
 mark.W {

@@ -4,6 +4,7 @@ import { Subscription, tap } from 'rxjs';
 import { NbaService } from '../nba.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { removeDuplicateStringElementArray } from '../shared/utils/array';
+import { DaysDataStoreService } from '../shared/stores/days-data-store.service';
 
 @Component({
   selector: 'app-game-stats',
@@ -15,9 +16,15 @@ export class GameStatsComponent {
   filters!: Filter;
   trackForm!: FormGroup;
 
+  daysOfData: number[] = [6, 12, 20];
+
   private subscriptions = new Subscription();
 
-  constructor(protected nbaService: NbaService, private fb: FormBuilder) {}
+  constructor(
+    protected nbaService: NbaService,
+    private fb: FormBuilder,
+    protected daysDataStoreService: DaysDataStoreService
+  ) {}
 
   ngOnInit(): void {
     const sub = this.nbaService
@@ -57,6 +64,11 @@ export class GameStatsComponent {
       );
       if (team) this.nbaService.addTrackedTeam(team);
     }
+  }
+
+  selectDaysToDisplay(e: any): void {
+    const nbDaysToDisplay = e.target.value;
+    this.daysDataStoreService.setDaysOfData(nbDaysToDisplay);
   }
 
   ngOnDestroy(): void {
