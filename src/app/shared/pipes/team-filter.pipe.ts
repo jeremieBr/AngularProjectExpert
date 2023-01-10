@@ -5,6 +5,13 @@ import { Team } from 'src/app/data.models';
   name: 'teamFilter',
 })
 export class TeamFilterPipe implements PipeTransform {
+  /**
+   * Applies a filter on team array according to the conference and/or division selected.
+   * @param items Array of team
+   * @param conferenceTerm Conference term
+   * @param divisionTerm Divison term
+   * @returns Array of team filtered
+   */
   transform(
     items: Team[],
     conferenceTerm: string,

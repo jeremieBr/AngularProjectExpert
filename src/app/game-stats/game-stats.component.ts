@@ -44,8 +44,11 @@ export class GameStatsComponent {
         })
       )
       .subscribe();
-
     this.subscriptions.add(sub);
+    this.initForm();
+  }
+
+  private initForm(): void {
     this.trackForm = this.fb.group({
       conference: [''],
       teamId: [''],
@@ -57,6 +60,9 @@ export class GameStatsComponent {
     return this.trackForm.value;
   }
 
+  /**
+   * Add selected team to list of team stats
+   */
   trackTeam(): void {
     if (this.trackForm.valid) {
       let team = this.allTeams.find(
@@ -66,8 +72,12 @@ export class GameStatsComponent {
     }
   }
 
-  selectDaysToDisplay(e: any): void {
-    const nbDaysToDisplay = e.target.value;
+  /**
+   * Notify store to update number of days to display on each team
+   * @param evt Event of select on change action
+   */
+  selectDaysToDisplay(evt: any): void {
+    const nbDaysToDisplay = evt.target.value;
     this.daysDataStoreService.setDaysOfData(nbDaysToDisplay);
   }
 

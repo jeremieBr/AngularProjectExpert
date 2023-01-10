@@ -13,11 +13,13 @@ export class TeamStatsComponent implements OnInit {
   @Input()
   team!: Team;
 
+  private subscriptions = new Subscription();
+
   games$!: Observable<Game[]>;
   stats!: Stats;
 
+  // Modal
   showConfirmationModal: boolean = false;
-  private subscriptions = new Subscription();
 
   constructor(
     protected nbaService: NbaService,
@@ -47,11 +49,19 @@ export class TeamStatsComponent implements OnInit {
     this.subscriptions.add(sub);
   }
 
+  /**
+   * Remove current team, then close modal
+   * @param team
+   */
   removeTrackedTeam(team: Team): void {
     this.nbaService.removeTrackedTeam(team);
     this.toggleModal(false);
   }
 
+  /**
+   * Toggle the modal
+   * @param bool
+   */
   toggleModal(bool: boolean): void {
     this.showConfirmationModal = bool;
   }
