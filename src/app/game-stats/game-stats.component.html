@@ -36,15 +36,20 @@
     </form>
   </div>
 </div>
-<select name="daysOfData" id="days" (change)="selectDaysToDisplay($event)">
-  <option
-    *ngFor="let days of daysOfData"
-    [value]="days"
-    [selected]="days == daysDataStoreService.currentDaysOfData"
-  >
-    {{ days }}
-  </option>
-</select>
+<div class="select-days-data">
+  Show last
+  <select name="daysOfData" id="days" (change)="selectDaysToDisplay($event)">
+    <option
+      *ngFor="let days of daysOfData"
+      [value]="days"
+      [selected]="days == daysDataStoreService.currentDaysOfData"
+    >
+      {{ days }}
+    </option>
+  </select>
+  days of data
+</div>
+
 <div class="row">
   <app-team-stats
     class="col-sm-4"
